@@ -1,2 +1,163 @@
-# HackFS-2023
-This repo is product for HackFS-2023
+# OkozukaiWallet
+
+This is a repo of OkozukaiWallet ( AA + hardhat + React.js + Push Protocol + The Graph + Polybase + LitProtocol )
+
+## Description
+
+## Archtechture
+
+## Mission
+
+- Problems
+
+- Solutions
+
+## Developed features
+
+- for Admin
+
+- for user
+
+## What I tried
+
+## Contract Info
+
+| No. | Cotract Name   | Address                                                                                                                         | Network |
+| :-- | :------------- | :------------------------------------------------------------------------------------------------------------------------------ | :------ |
+| 1   | FactoryManager | [0x8eD85ab44b29286D878492da06c862770A078176](https://mumbai.polygonscan.com/address/0x8eD85ab44b29286D878492da06c862770A078176) | Mumbai  |
+| 2   | LitNft         | [0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105](https://mumbai.polygonscan.com/address/0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105) | Mumbai  |
+
+## Subgrph Info
+
+[SubGraph Endpoint](https://api.studio.thegraph.com/query/44992/okozukaiwallet/v0.0.1)
+
+- Sample Query
+
+  ```gql
+  query MyQuery {
+    factoryCreateds(orderBy: id, orderDirection: desc) {
+      factoryId
+      factoryAddress
+    }
+  }
+  ```
+
+- Deployed Info
+
+  ```bash
+  ⠋ Upload subgraph to IPFS(node:9392) ExperimentalWarning: The Fetch API is an experimental feature. This feature could change at any time
+  (Use `node --trace-warnings ...` to show where the warning was created)
+                  .. QmetH7H6cWkiCAb1Va9nD2RY7U6DBsAErn91PcPjVvh6XM
+    Add file to IPFS build/FactoryManager/abis/FactoryManager.json
+                  .. QmfCrCkd43F9otUJ7MH76shKafHNsBygUF1qW5c4Bhjk5c
+    Add file to IPFS build/FactoryManager/FactoryManager.wasm
+                  .. QmRXuWw1rZGaCQJyg2FDTjMuobYNyqXY2sjNzHBUS7azKU
+  ✔ Upload subgraph to IPFS
+
+  Build completed: QmPKCkd51wUFWToUSottMUEXNEtuXFVAy1ocGQuFvFjCUZ
+
+  Deployed to https://thegraph.com/studio/subgraph/okozukaiwallet
+
+  Subgraph endpoints:
+  Queries (HTTP):     https://api.studio.thegraph.com/query/44992/okozukaiwallet/v0.0.1
+  ```
+
+## Tech Stack
+
+| No. | Name                |
+| :-- | :------------------ |
+| 1   | React.js            |
+| 2   | Tailwind CSS        |
+| 3   | ERC4337             |
+| 4   | ERC20               |
+| 5   | The Graph           |
+| 6   | hardhat             |
+| 8   | TypeScript          |
+| 9   | Polybase SDK        |
+| 10  | Account Abstraction |
+| 11  | Push Protocol SDK   |
+| 12  | openzeppelin        |
+| 13  | ethers.js           |
+| 14  | userOp.js           |
+| 15  | yarn workspaces     |
+| 16  | Spheron             |
+| 17  | LitProtocol SDK     |
+| 18  | Alchemy SDK         |
+
+## How to run
+
+- install
+
+  ```bash
+  yarn
+  ```
+
+- Smart Contract compile
+
+  ```bash
+  yarn backend:compile
+  ```
+
+- Smart Contract deploy
+
+  ```bash
+  yarn FactoryManager:deploy:mumbai
+  ```
+
+- Smart Contract verify
+
+  ```bash
+  yarn FactoryManager:verify:mumbai
+  ```
+
+- Subgraph build
+
+  ```bash
+  yarn subgraph:build
+  ```
+
+- Subgraph deploy
+
+  ```bash
+  yarn subgraph:deploy
+  ```
+
+- Frontend start
+
+  ```bash
+  yarn frontend:start
+  ```
+
+  Let's access to [http://localhost:3000/](http://localhost:3000/)!!
+
+## Live demo (vercel)
+
+[]()
+
+## Pitch Slide
+
+### Reference
+
+1. [EIP-4337](https://eips.ethereum.org/EIPS/eip-4337)
+2. [FireWallet - Github](https://github.com/xwing-india/eth-india)
+3. [Account-Abstruction](https://github.com/eth-infinitism/account-abstraction)
+4. [NPM AccountAbstruction](https://www.npmjs.com/package/@account-abstraction/contracts)
+5. [jiffyScan](https://www.jiffyscan.xyz/)
+6. [【GitHub】jiffyScan](https://github.com/mashharuki/jiffy-explorer)
+7. [【StackUp Docs】AA introduction](https://docs.stackup.sh/docs/introduction)
+8. [AAsnap](https://github.com/a42io/AAsnap)
+9. [stackup-bundler Sample source](https://github.com/stackup-wallet/stackup-bundler)
+10. [【npm】Userop.js](https://www.npmjs.com/package/userop)
+11. [MetaMask/snaps-monorepo](https://github.com/MetaMask/snaps-monorepo)
+12. [extend-the-functionality-of-metamask](https://docs.metamask.io/guide/snaps.html#extend-the-functionality-of-metamask)
+13. [Template Snap monorepo](https://github.com/MetaMask/template-snap-monorepo)
+14. [Create a gas estimation snap](https://docs.metamask.io/snaps/tutorials/gas-estimation)
+15. [Hardhat の使い方メモ(4) テスト - イベントのテスト方法](https://nawoo.hateblo.jp/entry/2021/11/15/223439)
+16. [ERC4337 に関するメモ](https://scrapbox.io/m1dstream/EIP4337_%23Ethereum)
+17. [発表資料](https://www.canva.com/design/DAFiCy3VhsI/KAkcUxU8fNhlMjUkeU0_eA/edit?utm_content=DAFiCy3VhsI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+18. [tailwindcomponents](https://tailwindcomponents.com/component/bottom-and-header-nav-responsive)
+19. [Alchemy ERC20Token Balance](https://docs.alchemy.com/reference/alchemy-gettokenbalances)
+20. [NFT API Quickstart](https://docs.alchemy.com/reference/nft-api-quickstart)
+21. [How to get all ERC20 tokens owned by an address](https://docs.moralis.io/web3-data-api/evm/how-to-get-all-erc20-tokens-owned-by-an-address)
+22. [Ceramic × LitProtocol Example](https://developer.litprotocol.com/ToolsAndExamples/Integrations/Ceramic/installation)
+23. [Lit Protocol Encryption & UploadIPFS](https://developer.litprotocol.com/SDK/Explanation/encryption)
