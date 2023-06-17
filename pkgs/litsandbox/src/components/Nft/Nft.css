@@ -1,0 +1,51 @@
+h2 {
+    margin: .5em;
+}
+
+img {
+    border-radius: 15px;
+    object-fit: fill;
+    height: 12em;
+    width: 10em;
+}
+
+.nft {
+    background-color: #ffffff;
+    color: black;
+    width: 50em;
+    border-radius: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.nft__divider {
+    height: 1px;
+    background-color: black;
+}
+
+.nft__details {
+    display: flex;
+    margin: 1em;
+    gap: 2em;
+}
+
+.nft__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: start;
+    width: 100%;
+}
+
+.nft__description__text {
+  font-family: "Poppins", sans-serif;
+	height: 10em;
+	border: none;
+	resize: none;
+	font-size: 15px;
+	color: #131316;
+}
+
+.nft__decrypt {
+    margin-left: 18%;
+}

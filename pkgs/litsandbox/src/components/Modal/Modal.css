@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+h2 {
+	margin: 0;
+}
+
+.modal {
+	background-color: #ffffff;
+	color: black;
+	font-family: "Poppins", sans-serif;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	width: 30em;
+	padding: 1em;
+	border-radius: 15px;
+	margin-right: 4em;
+}
+
+.modal__close {
+	position: fixed;
+	right: 35%;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.modal__input {
+  font-family: "Poppins", sans-serif;
+	padding: 5px;
+  color: #131316;
+}
+
+.modal__description {
+  font-family: "Poppins", sans-serif;
+	padding: 5px;
+  height: 7em;
+  border-radius: 5px;
+  color: #131316;
+}
+
+.modal__button {
+	margin-left: 30%;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+	cursor: not-allowed;
+}
