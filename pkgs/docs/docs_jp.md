@@ -152,20 +152,22 @@ const resolveEns = async (value: string) => {
 
 ### デモ動画の構成案
 
-1. まず簡単に今回作った概要説明 (40 秒)
-   Let's start prezentation.
-   OkozukaiWallet is a product that creates an opportunity for mass adoption of Web3.
+1. まず簡単に今回作った概要説明 (40 秒)  
+   Ok, Let's start prezentation.
+   I developed OkozukaiWallet at this hackathon.
+   It is a product that makes an opportunity for mass adoption of Web3.
 
-   EOA will take care of the setup for entering the Web3 world, including the management of private keys, and users will be able to manage their tokens easily.
+   EOA will take care of the setup for entering the Web3 , including key managemetn, and users will be able to manage their tokens easily.
 
-   Although the technology has developed and various use cases have been created, the public still has a speculative and dangerous image of Web3.
+   Although the technology has developed and various use cases have been created, the public still has a dangerous image of Web3.
 
    The fact that private keys must be managed by individuals is also a major hurdle.
 
-   Therefore, we developed a prototype that combines Account Abstraction, The Graph, Polybase, Push Protocol, and Lit Protocol technologies to realize a smart contract wallet application that can be used even by children.
+   Therefore, I developed a prototype that combines Web3 Technology (Account Abstraction, The Graph, Polybase, Push Protocol, and Lit Protocol technologies ) to realize a smart contract wallet application that can be used even by children.
 
 2. 機能の紹介 (30 秒)
-   I have developed 3 functions each for EOA and non-EOA users!
+   I have developed 3 functions each for EOA and non-EOA users!  
+   A detailed functional overview will be shown in the demo that follows.
 
 - for admin (EOA)
 
@@ -180,6 +182,9 @@ const resolveEns = async (value: string) => {
   3. Notification function upon receipt of token
 
 3. prize になりそうな技術をどのように使ったか説明する。 (30 秒)
+
+To apply for the PRIZE slot, the following decentralized techniques are used.
+
 4. デモ (デモ用の factory を作成 + 入金 + 送金 + トランザクションの履歴確認 + 通知履歴を確認) (110 秒)
    this screen is home screen for admin.
    first, Admin need to create walletFactory & stake a little bit Native token.
@@ -189,6 +194,8 @@ const resolveEns = async (value: string) => {
 
    This time I show you to transfer NFT token.
    I would like to send it to the address I just created.
+
+   Notification incresed! Transaction incresed!!
 
    OK! It's success!!
 
