@@ -153,9 +153,45 @@ const resolveEns = async (value: string) => {
 ### デモ動画の構成案
 
 1. まず簡単に今回作った概要説明 (40 秒)
+   Let's start prezentation.
+   OkozukaiWallet is a product that creates an opportunity for mass adoption of Web3.
+
+   EOA will take care of the setup for entering the Web3 world, including the management of private keys, and users will be able to manage their tokens easily.
+
+   Although the technology has developed and various use cases have been created, the public still has a speculative and dangerous image of Web3.
+
+   The fact that private keys must be managed by individuals is also a major hurdle.
+
+   Therefore, we developed a prototype that combines Account Abstraction, The Graph, Polybase, Push Protocol, and Lit Protocol technologies to realize a smart contract wallet application that can be used even by children.
+
 2. 機能の紹介 (30 秒)
+   I have developed 3 functions each for EOA and non-EOA users!
+
+- for admin (EOA)
+
+  1. Ability to create per-user contract wallets
+  2. Ability to deposit funds into a contract wallet
+  3. Transaction execution history inquiry function for each contract wallet
+
+- for user (non-EOA)
+
+  1. Ability to send tokens (Native, ERC20, NFT) to any address
+  2. Transaction History Inquiry Function
+  3. Notification function upon receipt of token
+
 3. prize になりそうな技術をどのように使ったか説明する。 (30 秒)
 4. デモ (デモ用の factory を作成 + 入金 + 送金 + トランザクションの履歴確認 + 通知履歴を確認) (110 秒)
+   this screen is home screen for admin.
+   first, Admin need to create walletFactory & stake a little bit Native token.
+
+   OK! Next, Let's transfer tokens from Contract Wallet!
+   You can see Asset management Screen. this is home screen for user.(non EOA)
+
+   This time I show you to transfer NFT token.
+   I would like to send it to the address I just created.
+
+   OK! It's success!!
+
 5. 今後対応していく予定のもの (30 秒)
 
 mission の部分の細かい部分は、画像データとしてアップロードだけにする。

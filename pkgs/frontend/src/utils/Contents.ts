@@ -21,6 +21,7 @@ export const DB_NAME_SPACE = "okozukai-db3";
 // Polybase Collection NAME
 export const DB_COLLECTION_NAME = "OkozukaiDB"
 // Push channel Address
-export const PUSH_CHANNEL_ADDRESS= "0x65602D316EBde11bb5b582a778365C0FdA6d6084";
+//export const PUSH_CHANNEL_ADDRESS= "0x65602D316EBde11bb5b582a778365C0FdA6d6084";
+export const PUSH_CHANNEL_ADDRESS= "0x51908F598A5e0d8F1A3bAbFa6DF76F9704daD072";
 // NFT Contract Address
 export const LIT_NFT_ADDRESS = "0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105";
