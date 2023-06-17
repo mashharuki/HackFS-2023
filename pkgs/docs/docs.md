@@ -115,4 +115,4 @@ After conducting technical verification by referring to the starter kit and Get 
 ## About Future
 
 Since processing has become slow in some areas, I will review the design to see if performance can be improved.
-Also, although not implemented yet, I aim to make the system easier to use and more secure by implementing KYC and account management functions for users.
+Also, although not implemented yet, I want to make the system easier to use and more secure by implementing KYC and account management functions for users.
