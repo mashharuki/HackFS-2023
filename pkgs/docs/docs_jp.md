@@ -157,7 +157,7 @@ const resolveEns = async (value: string) => {
    I developed OkozukaiWallet at this hackathon.
    It is a product that makes an opportunity for mass adoption of Web3.
 
-   EOA will take care of the setup for entering the Web3 , including key managemetn, and users will be able to manage their tokens easily.
+   Non EOA users will be able to manage their tokens easily without key management.
 
    Although the technology has developed and various use cases have been created, the public still has a dangerous image of Web3.
 
@@ -183,7 +183,7 @@ const resolveEns = async (value: string) => {
 
 3. prize になりそうな技術をどのように使ったか説明する。 (30 秒)
 
-To apply for the PRIZE slot, the following decentralized techniques are used.
+To apply for the PRIZE slot, the following techniques are used.
 
 4. デモ (デモ用の factory を作成 + 入金 + 送金 + トランザクションの履歴確認 + 通知履歴を確認) (110 秒)
    this screen is home screen for admin.
@@ -198,6 +198,8 @@ To apply for the PRIZE slot, the following decentralized techniques are used.
    Notification incresed! Transaction incresed!!
 
    OK! It's success!!
+
+   My prezation is done! Thank you for listening!
 
 5. 今後対応していく予定のもの (30 秒)
 
