@@ -178,7 +178,9 @@ After conducting technical verification by referring to the starter kit and Get 
 
 []()
 
-## Pitch Slide
+## Presentation Slide
+
+[here. This is presentation slide. It is created with "Canva"](https://www.canva.com/design/DAFmCdhBu4s/JhjM7jzOi58TJLyy1CIZ_g/edit?utm_content=DAFmCdhBu4s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ### Reference
 
