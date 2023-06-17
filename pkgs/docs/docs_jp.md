@@ -195,6 +195,14 @@ To apply for the PRIZE slot, the following techniques are used.
    This time I show you to transfer NFT token.
    I would like to send it to the address I just created.
 
+   this Screen is home screen for Non-EOA users.
+
+   Push Protocol is used to send notifications to recipients when tokens are transferred from a contract wallet.
+
+   Polybase is used to manage and query information on transactions sent from the contract wallet.
+
+   The AccountAbstraction is used to allow non-EOA users to send tokens. In this case, a private key for the bundler is required, and LitProtocol is used for its encryption.
+
    Notification incresed! Transaction incresed!!
 
    OK! It's success!!
