@@ -180,7 +180,15 @@ After conducting technical verification by referring to the starter kit and Get 
 
 ## Presentation Slide
 
-[here. This is presentation slide. It is created with "Canva"](https://www.canva.com/design/DAFmCdhBu4s/JhjM7jzOi58TJLyy1CIZ_g/edit?utm_content=DAFmCdhBu4s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+![](./pkgs/docs/imgs/pitch/1.jpg)
+![](./pkgs/docs/imgs/pitch/2.jpg)
+![](./pkgs/docs/imgs/pitch/3.jpg)
+![](./pkgs/docs/imgs/pitch/4.jpg)
+![](./pkgs/docs/imgs/pitch/5.jpg)
+![](./pkgs/docs/imgs/pitch/6.jpg)
+![](./pkgs/docs/imgs/pitch/7.jpg)
+![](./pkgs/docs/imgs/pitch/8.jpg)
+![](./pkgs/docs/imgs/pitch/9.jpg)
 
 ### Reference
 
@@ -207,3 +215,5 @@ After conducting technical verification by referring to the starter kit and Get 
 21. [How to get all ERC20 tokens owned by an address](https://docs.moralis.io/web3-data-api/evm/how-to-get-all-erc20-tokens-owned-by-an-address)
 22. [Ceramic × LitProtocol Example](https://developer.litprotocol.com/ToolsAndExamples/Integrations/Ceramic/installation)
 23. [Lit Protocol Encryption & UploadIPFS](https://developer.litprotocol.com/SDK/Explanation/encryption)
+24. [demo video (Operation) - Youtube ](https://youtu.be/uPXRCQGeYv8)
+25. [Presentation Slide](https://www.canva.com/design/DAFmCdhBu4s/JhjM7jzOi58TJLyy1CIZ_g/edit?utm_content=DAFmCdhBu4s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
