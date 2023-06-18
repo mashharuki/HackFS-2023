@@ -191,6 +191,8 @@ After conducting technical verification by referring to the starter kit and Get 
 
 ## Live demo (Spheron)
 
+※ To use the function for Admin, please access the site with a browser that has Metamask installed with a wallet address that holds at least 50 MATIC.
+
 - [atached domain site https://mashharuki.com/](https://mashharuki.com/)
 - [live demo - Spheron https://hackfs-2023-fad570.spheron.app](https://hackfs-2023-fad570.spheron.app)
 - [Deployment Preview (filecoin network)](https://bafybeibbhw3e6xfsayjxqq6eiloaje6ggxyl3wzwuje2rcgprmvbjoi4qm.ipfs.sphn.link/)
