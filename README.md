@@ -195,6 +195,10 @@ After conducting technical verification by referring to the starter kit and Get 
 - [live demo - Spheron https://hackfs-2023-fad570.spheron.app](https://hackfs-2023-fad570.spheron.app)
 - [Deployment Preview (filecoin network)](https://bafybeibbhw3e6xfsayjxqq6eiloaje6ggxyl3wzwuje2rcgprmvbjoi4qm.ipfs.sphn.link/)
 
+## Live demo (Vercel)
+
+- [live demo - Vercel https://hack-fs-2023-frontend.vercel.app/](https://hack-fs-2023-frontend.vercel.app/)
+
 ## Presentation Slide
 
 ![](./pkgs/docs/imgs/pitch/1.jpg)
