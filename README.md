@@ -188,7 +188,7 @@ After conducting technical verification by referring to the starter kit and Get 
 
   Let's access to [http://localhost:3000/](http://localhost:3000/)!!
 
-## Live demo ()
+## Live demo (Spheron)
 
 - [atached domain site https://mashharuki.com/](https://mashharuki.com/)
 - [live demo - Spheron https://hackfs-2023-fad570.spheron.app](https://hackfs-2023-fad570.spheron.app)
