@@ -20,6 +20,7 @@ const getSigningKey = async(): Promise<string> => {
   const nfts: Nft[] = await getLitNft();
   // get nft data
   const nft: Nft = nfts[0];
+  console.log("nft:", nft);
 
   // decrypt data
   const encryptedDescriptionBlob = await (await fetch(nft.encryptedDescription)).blob();
@@ -89,6 +90,8 @@ export async function getAddress(
     ENTRY_POINT_ADDRESS,
     factoryAddress,
   );
+
+  console.log("simple Account:", simpleAccount);
   const address = simpleAccount.getSender();
   return address;
 }
