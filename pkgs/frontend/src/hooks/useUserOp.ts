@@ -3,12 +3,11 @@ import { Client, Presets } from "userop";
 import lit from "../Lit/lit";
 import { ERC20_ABI, ERC721_ABI } from "../utils";
 import { CLIOpts } from "../utils/types";
+import { ENTRY_POINT_ADDRESS } from "./../utils/Contents";
 import { Nft, getLitNft } from "./useContract";
 
 const {
-  REACT_APP_SIGNING_KEY,
   REACT_APP_BUNDLER_RPC_URL,
-  REACT_APP_ENTRY_POINT_ADDRESS,
   REACT_APP_PAYMASTER_RPC_URL,
   REACT_APP_PAYMASTER_CONTEXT
 }:any = process.env;
@@ -64,7 +63,7 @@ const createSimpleAccountObject = async(
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
     signingKey,
     REACT_APP_BUNDLER_RPC_URL,
-    REACT_APP_ENTRY_POINT_ADDRESS,
+    ENTRY_POINT_ADDRESS,
     factoryAddress,
     paymaster
   );
@@ -87,7 +86,7 @@ export async function getAddress(
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
     signingKey,
     REACT_APP_BUNDLER_RPC_URL,
-    REACT_APP_ENTRY_POINT_ADDRESS,
+    ENTRY_POINT_ADDRESS,
     factoryAddress,
   );
   const address = simpleAccount.getSender();
@@ -109,7 +108,7 @@ export async function transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(factoryAddress, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, REACT_APP_ENTRY_POINT_ADDRESS);
+  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
   const target = ethers.utils.getAddress(t);
   const value = ethers.utils.parseEther(amt);
@@ -147,7 +146,7 @@ export async function erc20Transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(factoryAddress, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, REACT_APP_ENTRY_POINT_ADDRESS);
+  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
   const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
 
@@ -199,7 +198,7 @@ export async function erc20Approve(
 ): Promise<string>  {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(factoryAddress, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, REACT_APP_ENTRY_POINT_ADDRESS);
+  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
   const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
 
@@ -252,7 +251,7 @@ export async function erc20BatchTransfer(
 ) {
    // get simpleAccount object
    const simpleAccount = await createSimpleAccountObject(factoryAddress, opts);
-   const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, REACT_APP_ENTRY_POINT_ADDRESS);
+   const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
  
    const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
  
@@ -314,7 +313,7 @@ export async function erc721Transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(factoryAddress, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, REACT_APP_ENTRY_POINT_ADDRESS);
+  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
   const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
 
