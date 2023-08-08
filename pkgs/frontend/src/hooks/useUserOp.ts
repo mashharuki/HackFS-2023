@@ -9,7 +9,8 @@ import { Nft, getLitNft } from "./useContract";
 const {
   REACT_APP_BUNDLER_RPC_URL,
   REACT_APP_PAYMASTER_RPC_URL,
-  REACT_APP_PAYMASTER_CONTEXT
+  REACT_APP_PAYMASTER_CONTEXT,
+  REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY
 }:any = process.env;
 
 /**
@@ -51,18 +52,17 @@ const createSimpleAccountObject = async(
   opts: CLIOpts
 ): Promise<any> => {
 
-  // get signing key
-  const signingKey = await getSigningKey();
-
   const paymaster = opts.withPM
     ? Presets.Middleware.verifyingPaymaster(
       REACT_APP_PAYMASTER_RPC_URL,
       REACT_APP_PAYMASTER_CONTEXT
       )
     : undefined;
+
   // get simpleAccount object
+  // REACT_APP_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
-    signingKey,
+    REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY,
     REACT_APP_BUNDLER_RPC_URL,
     ENTRY_POINT_ADDRESS,
     factoryAddress,
@@ -80,12 +80,10 @@ const createSimpleAccountObject = async(
 export async function getAddress(
   factoryAddress: string
 ) {
-
-  // get signing key
-  const signingKey = await getSigningKey();
-  
+  // get simpleAccount object
+  // REACT_APP_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
-    signingKey,
+    REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY,
     REACT_APP_BUNDLER_RPC_URL,
     ENTRY_POINT_ADDRESS,
     factoryAddress,
