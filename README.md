@@ -184,7 +184,11 @@ After conducting technical verification by referring to the starter kit and Get 
 - Frontend start
 
   ```bash
-  yarn frontend:start
+  yarn frontend_admin:start
+  ```
+
+  ```bash
+  yarn frontend_user:start
   ```
 
   Let's access to [http://localhost:3000/](http://localhost:3000/)!!
