@@ -1,10 +1,8 @@
 import { ethers } from "ethers";
 import { Client, Presets } from "userop";
-import lit from "../Lit/lit";
 import { ERC20_ABI, ERC721_ABI } from "../utils";
 import { CLIOpts } from "../utils/types";
 import { ENTRY_POINT_ADDRESS } from "./../utils/Contents";
-import { Nft, getLitNft } from "./useContract";
 
 const {
   REACT_APP_BUNDLER_RPC_URL,
@@ -13,36 +11,6 @@ const {
   REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY
 }:any = process.env;
 
-/**
- * getSigningKey method
- */
-const getSigningKey = async(): Promise<string> => {
-  // fetch
-  const nfts: Nft[] = await getLitNft();
-  // get nft data
-  const nft: Nft = nfts[0];
-  console.log("nft:", nft);
-
-  // decrypt data
-  const encryptedDescriptionBlob = await (await fetch(nft.encryptedDescription)).blob();
-
-  let signingKey: string;
-
-    try {
-      // decryptText
-      signingKey = await lit.decryptText(encryptedDescriptionBlob, nft.encryptedSymmetricKey);
-    } catch (error: any) {
-      if (error.errorCode === "incorrect_access_control_conditions") {
-        console.error("decrypt fail..");
-        return "";
-      } else {
-        console.error("decrypt fail..");
-        return "";
-      }
-    }
-
-    return signingKey;
-}
 
 /**
  * create SimpleAccount Object method

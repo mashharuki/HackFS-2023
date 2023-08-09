@@ -5,8 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './Components/common/Footer';
 import Header from './Components/common/Header';
 import Home from './Page/Home';
-import { ContractProvider } from './context/ContractProvider';
-import { CurrentAccountProvider } from "./context/CurrentAccountProvider";
 import './css/App.css';
 import { DB_NAME_SPACE } from "./utils/Contents";
 
@@ -44,15 +42,11 @@ function App() {
 
 function Root() {
   return (
-    <CurrentAccountProvider>
-      <ContractProvider>
-        <PolybaseProvider polybase={polybase}>
-          <BrowserRouter>
-            <App/>
-          </BrowserRouter>
-        </PolybaseProvider>
-      </ContractProvider>
-    </CurrentAccountProvider>
+    <PolybaseProvider polybase={polybase}>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </PolybaseProvider>
   );
 }
 

@@ -118,10 +118,6 @@ const Home = () => {
                   <ERC20Transfer setIsLoading={setIsLoading} factoryAddress={factoryAddress}/>
                   <ERC721Transfer setIsLoading={setIsLoading} factoryAddress={factoryAddress}/>
                 </div>
-                <button
-                    className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm"
-                >
-                </button>
               </div>
             )}
           </div>
