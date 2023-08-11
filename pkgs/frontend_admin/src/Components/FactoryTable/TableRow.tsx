@@ -1,6 +1,5 @@
 import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { getAddress } from '../../hooks/useUserOp';
 import { MUMBAI_RPC_URL, POLYGONSCAN_URL } from '../../utils/Contents';
 import { shortAddress } from '../../utils/ethereum';
@@ -83,12 +82,7 @@ const TableRow = (porps: Props) => {
                 </a>
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm underline underline-offset-4'>
-                <Link to='/transfer' state={{
-                    factoryAddress: factoryCreated.factoryAddress,
-                    contractAddress: address
-                }}>
-                    {address}
-                </Link>
+                {address}
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 {balance}
