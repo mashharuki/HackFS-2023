@@ -15,8 +15,6 @@ import { POLYGONSCAN_URL } from "../utils/Contents";
 import { createAlchemy } from "../utils/alchemy";
 import { DB_COLLECTION_NAME, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from './../utils/Contents';
 
-const alchemy = createAlchemy();
-
 /**
  * Home Component
  * @returns 
@@ -30,6 +28,8 @@ const Home = () => {
   const [notificateFlg, setNotificateFlg] = useState(false);
   const [txFlg, setTxFlg] = useState(false);
 
+  // create alchemy object
+  const alchemy = createAlchemy();
   // Polybase config
   const polybase = usePolybase();
   // factoryAddressを取得する。
@@ -39,6 +39,9 @@ const Home = () => {
 
 
   useEffect(() => {
+    /**
+     * 初期化メソッド
+     */
     const init = async() => {
       setIsLoading(true);
 
