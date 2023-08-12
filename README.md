@@ -1,14 +1,14 @@
-# OkozukaiWallet
+# OkozukaiValut
 
 <div align="center">
    <img width="200" src="./pkgs/docs/imgs/logo/logo3.jpeg"/>
 </div>
 
-This is a repo of OkozukaiWallet ( AA + hardhat + React.js + Push Protocol + The Graph + Polybase + LitProtocol )
+This is a repo of OkozukaiValut ( AA + hardhat + React.js + Push Protocol + The Graph + Polybase + LitProtocol )
 
 ## Description
 
-OkozukaiWallet is a product that creates an opportunity for mass adoption of Web3.
+OkozukaiValut is a product that creates an opportunity for mass adoption of Web3.
 
 EOA will take care of the setup for entering the Web3 world, including the management of private keys, and users will be able to manage their tokens easily.
 
@@ -73,7 +73,7 @@ After conducting technical verification by referring to the starter kit and Get 
 
 ## Subgrph Info
 
-[SubGraph Endpoint](https://api.studio.thegraph.com/query/44992/okozukaiwallet/v0.0.1)
+[SubGraph Endpoint](https://api.studio.thegraph.com/query/44992/OkozukaiValut/v0.0.1)
 
 - Sample Query
 
@@ -100,10 +100,10 @@ After conducting technical verification by referring to the starter kit and Get 
 
   Build completed: QmPKCkd51wUFWToUSottMUEXNEtuXFVAy1ocGQuFvFjCUZ
 
-  Deployed to https://thegraph.com/studio/subgraph/okozukaiwallet
+  Deployed to https://thegraph.com/studio/subgraph/OkozukaiValut
 
   Subgraph endpoints:
-  Queries (HTTP):     https://api.studio.thegraph.com/query/44992/okozukaiwallet/v0.0.1
+  Queries (HTTP):     https://api.studio.thegraph.com/query/44992/OkozukaiValut/v0.0.1
   ```
 
 ## Tech Stack
