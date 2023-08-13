@@ -4,6 +4,7 @@ type ChildProps = {
     setTxFlg: (flg: boolean) => void;
     spams: number;
     txs: number;
+    logout: () => void;
 };
 
 /**
@@ -14,7 +15,8 @@ const SliderBar = ({
     setNotificateFlg, 
     setTxFlg,
     spams,
-    txs
+    txs,
+    logout
 }:ChildProps) => {
     
     return (
@@ -77,6 +79,13 @@ const SliderBar = ({
                                 </button>
                             </span>
                         </a>
+                        <button
+                            type="button"
+                            onClick={logout}
+                            className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                        >
+                            Logout
+                        </button>
                     </nav>
                 </div>
             </div>
