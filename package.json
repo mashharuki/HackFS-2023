@@ -14,6 +14,7 @@
     "backend:compile": "yarn workspace backend compile",
     "FactoryManager:deploy:mumbai": "yarn workspace backend FactoryManager:deploy:mumbai",
     "FactoryManager:verify:mumbai": "yarn workspace backend FactoryManager:verify:mumbai",
+    "SimpleAccountFactory:verify:mumbai": "yarn workspace backend SimpleAccountFactory:verify:mumbai",
     "frontend_admin:start": "yarn workspace frontend_admin start",
     "frontend_admin:build": "yarn workspace frontend_admin build",
     "frontend_user:start": "yarn workspace frontend_user start",

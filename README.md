@@ -73,7 +73,7 @@ After conducting technical verification by referring to the starter kit and Get 
 
 ## Subgrph Info
 
-[SubGraph Endpoint](https://api.studio.thegraph.com/query/44992/OkozukaiValut/v0.0.1)
+[SubGraph Endpoint (OkozukaiWallet)](https://api.studio.thegraph.com/query/44992/OkozukaiValut/v0.0.1)
 
 - Sample Query
 
@@ -104,6 +104,39 @@ After conducting technical verification by referring to the starter kit and Get 
 
   Subgraph endpoints:
   Queries (HTTP):     https://api.studio.thegraph.com/query/44992/OkozukaiValut/v0.0.1
+  ```
+
+[SubGraph Endpoint (OkozukaiVault)](https://api.studio.thegraph.com/query/44992/okozukaivalut/v0.0.1)
+
+- Sample Query
+
+  ```gql
+  query MyQuery {
+    createds(orderBy: walletId, orderDirection: desc) {
+      walletId
+      addr
+    }
+  }
+  ```
+
+- Deployed Info
+
+  ```bash
+  ⠋ Upload subgraph to IPFS(node:2728) ExperimentalWarning: The Fetch API is an experimental feature. This feature could change at any time
+  (Use `node --trace-warnings ...` to show where the warning was created)
+                  .. QmR4XETBG1wBaCGydaRmATe1w4F46ibi4vy9m5wq6puef7
+    Add file to IPFS build/SimpleAccountFactory/abis/SimpleAccountFactory.json
+                  .. QmQeKui77aWb4UNfuFf5dF8GQLJ2sfCaWd4RhxSz3g5bqq
+    Add file to IPFS build/SimpleAccountFactory/SimpleAccountFactory.wasm
+                  .. Qmcy7B9jgGSXpL2A5MbLpCX1LZnUGxppG5gbtH7xJVGCYa
+  ✔ Upload subgraph to IPFS
+
+  Build completed: QmY88VLnEAXxrniE1sWThzP7mCuWYHqyGXyQMzFNZfbbTh
+
+  Deployed to https://thegraph.com/studio/subgraph/okozukaivalut
+
+  Subgraph endpoints:
+  Queries (HTTP):     https://api.studio.thegraph.com/query/44992/okozukaivalut/v0.0.1
   ```
 
 ## Tech Stack

@@ -8,7 +8,8 @@
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
     "FactoryManager:deploy:mumbai": "npx hardhat run scripts/deploy_FactoryManager.ts --network mumbai",
-    "FactoryManager:verify:mumbai": "npx hardhat verify 0x8eD85ab44b29286D878492da06c862770A078176 --network mumbai"
+    "FactoryManager:verify:mumbai": "npx hardhat verify 0x8eD85ab44b29286D878492da06c862770A078176 --network mumbai",
+    "SimpleAccountFactory:verify:mumbai": "npx hardhat verify 0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08 --network mumbai --constructor-args scripts/arguments.ts"
   },
   "keywords": [],
   "author": "",

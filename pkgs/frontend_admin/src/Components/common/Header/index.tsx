@@ -25,7 +25,7 @@ const Header = () => {
                                 className="p-2 ml-2 bg-teal-200 text-gray-900 font-semibold leading-none border border-teal-400 rounded hover:border-transparent hover:bg-teal-200"
                                 onClick={connectWallet}
                             >
-                                Connect Wallet
+                                Connect
                             </button>
                         }
                     </div>

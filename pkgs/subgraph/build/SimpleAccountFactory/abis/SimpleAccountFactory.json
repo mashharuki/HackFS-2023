@@ -1,29 +1,40 @@
 [
   {
+    "inputs": [
+      {
+        "internalType": "contract IEntryPoint",
+        "name": "_entryPoint",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "factoryId",
+        "name": "walletId",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "address",
-        "name": "factoryAddress",
+        "name": "addr",
         "type": "address"
       }
     ],
-    "name": "FactoryCreated",
+    "name": "Created",
     "type": "event"
   },
   {
     "inputs": [],
-    "name": "ENTRY_POINT_ADDRESS",
+    "name": "accountImplementation",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "contract SimpleAccount",
         "name": "",
         "type": "address"
       }
@@ -33,11 +44,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "factoryAddress",
-        "type": "address"
-      },
       {
         "internalType": "uint32",
         "name": "unstakeDelaySec",
@@ -50,24 +56,35 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "createFactory",
-    "outputs": [],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "salt",
+        "type": "uint256"
+      }
+    ],
+    "name": "createAccount",
+    "outputs": [
+      {
+        "internalType": "contract SimpleAccount",
+        "name": "ret",
+        "type": "address"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "factories",
+    "inputs": [],
+    "name": "entryPoint",
     "outputs": [
       {
-        "internalType": "contract SimpleAccountFactory",
+        "internalType": "contract IEntryPoint",
         "name": "",
         "type": "address"
       }
@@ -78,30 +95,22 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
-        "name": "",
+        "name": "salt",
         "type": "uint256"
       }
     ],
-    "name": "factoryMap",
+    "name": "getAddress",
     "outputs": [
       {
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getFactories",
-    "outputs": [
-      {
-        "internalType": "contract SimpleAccountFactory[]",
-        "name": "coll",
-        "type": "address[]"
       }
     ],
     "stateMutability": "view",
