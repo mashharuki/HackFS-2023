@@ -25,7 +25,7 @@ export const DB_COLLECTION_NAME = "OkozukaiDB"
 export const PUSH_CHANNEL_ADDRESS= "0x51908F598A5e0d8F1A3bAbFa6DF76F9704daD072";
 // NFT Contract Address
 export const LIT_NFT_ADDRESS = "0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105";
-// entry piint contract
+// entry point contract
 export const ENTRY_POINT_ADDRESS = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
 // simple account factory address
 export const SIMPLE_ACCOUNT_FACTORY_ADDRESS = "0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08";

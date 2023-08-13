@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ContractContext from '../../context/ContractProvider';
 import CurrentAccountContent from "./../../context/CurrentAccountProvider";
+import { SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "./../../utils/Contents";
 import { FactoryCreated } from './../../utils/types';
 import TableRow from './TableRow';
 
@@ -22,22 +23,6 @@ const FactoryTable = (props:Props) => {
     
     const [currentAccount] = useContext(CurrentAccountContent);
     const [createNewFactory, addStake] = useContext(ContractContext);
-
-    /**
-     * create newFactory method
-     */
-    const createFactory = async() => {
-        try {
-            setIsLoading(true);
-            await createNewFactory(currentAccount!);
-            alert('send sucess!!!');
-            setIsLoading(false);
-        } catch(err) {
-            console.log("err:", err);
-            alert('send fai....');
-            setIsLoading(false);
-        }
-    };
 
     /**
      * tableRows
@@ -76,9 +61,9 @@ const FactoryTable = (props:Props) => {
             <div className="m-4">
                 <button 
                     className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm"
-                    onClick={createFactory}
+                    onClick={() => addStake(currentAccount!, SIMPLE_ACCOUNT_FACTORY_ADDRESS)}
                 >
-                    Create New Factory
+                    add Stake
                 </button>
             </div>
         </>
