@@ -2,11 +2,11 @@ import { useContext } from "react";
 import ContractContext from '../../context/ContractProvider';
 import CurrentAccountContent from "./../../context/CurrentAccountProvider";
 import { SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "./../../utils/Contents";
-import { FactoryCreated } from './../../utils/types';
+import { WalletCreated } from './../../utils/types';
 import TableRow from './TableRow';
 
 interface Props {
-    data: { factoryCreateds: FactoryCreated[] };
+    data: { createds: WalletCreated[] };
     setIsLoading: (arg0: boolean) => void;
 }
 
@@ -28,12 +28,11 @@ const FactoryTable = (props:Props) => {
      * tableRows
      */
     const TableRows = () => {
-        return (data.factoryCreateds.map((factoryCreated: FactoryCreated) => (
+        return (data.createds.map((walletCreated: WalletCreated) => (
             <TableRow 
-                factoryCreated={factoryCreated} 
+                walletCreated={walletCreated} 
                 setIsLoading={setIsLoading} 
                 currentAddress={currentAccount!}
-                addStake={addStake}
             />
         )))
     }
@@ -48,12 +47,10 @@ const FactoryTable = (props:Props) => {
                     <table>
                         <thead>
                             <tr >
-                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Factory ID</th>
-                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Factory Address</th>
+                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Wallet ID</th>
                                 <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Contract Wallet Address</th>
                                 <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Balance</th>
                                 <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Deposit</th>
-                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Action</th>
                             </tr>
                         </thead>
                         <tbody>

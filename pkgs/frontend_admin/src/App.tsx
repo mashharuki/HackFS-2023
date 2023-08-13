@@ -1,18 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Client, Provider, cacheExchange, fetchExchange } from 'urql';
+import { Provider } from 'urql';
 import Footer from './Components/common/Footer';
 import Header from './Components/common/Header';
 import Home from './Page/Home';
 import { ContractProvider } from './context/ContractProvider';
 import { CurrentAccountProvider } from "./context/CurrentAccountProvider";
 import './css/App.css';
-import { GRAPHQL_API_ENDPOINT } from "./utils/Contents";
-
-// create client instance for GraphQL
-const client = new Client({
-  url: GRAPHQL_API_ENDPOINT,
-  exchanges: [cacheExchange, fetchExchange],
-});
+import { createGraphQLObject } from "./utils/graphQL";
 
 /**
  * App Component
@@ -31,6 +25,9 @@ function App() {
 }
 
 function Root() {
+  // create graphQl object
+  const client = createGraphQLObject();
+
   return (
     <CurrentAccountProvider>
       <ContractProvider>
