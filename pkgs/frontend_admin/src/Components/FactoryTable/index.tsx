@@ -42,15 +42,15 @@ const FactoryTable = (props:Props) => {
             {(currentAccount !== "" && currentAccount !== undefined)  ? (
                 <>
                     <div className="mb-8">
-                        Contract Wallets
+                        Vaults
                     </div>
                     <table>
                         <thead>
-                            <tr >
-                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Wallet ID</th>
-                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Contract Wallet Address</th>
-                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Balance</th>
-                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-teal-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Deposit</th>
+                            <tr>
+                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-rose-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Wallet ID</th>
+                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-rose-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Contract Wallet Address</th>
+                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-rose-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Balance</th>
+                                <th className='px-5 py-3 border-b-2 border-gray-200 bg-rose-600 text-center text-xs font-semibold text-white uppercase tracking-wider'>Deposit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,7 +69,7 @@ const FactoryTable = (props:Props) => {
             ) :(
                 <div className="mb-8">
                     <button
-                        className="p-2 ml-2 bg-teal-200 text-gray-900 font-semibold leading-none border border-teal-400 rounded hover:border-transparent hover:bg-teal-200"
+                        className="p-2 ml-2 bg-rose-200 text-gray-900 font-semibold leading-none border border-rose-400 rounded hover:border-transparent hover:bg-rose-200"
                         onClick={connectWallet}
                     >
                         Please Connect

@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
-import { MUMBAI_RPC_URL } from '../../utils/Contents';
+import { MUMBAI_RPC_URL, POLYGONSCAN_URL } from '../../utils/Contents';
 import { WalletCreated } from '../../utils/types';
 import SendModal from '../common/SendModal';
 
@@ -49,7 +49,9 @@ const TableRow = (porps: Props) => {
                 {walletCreated.walletId}
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm underline underline-offset-4'>
-                {walletCreated.addr}
+                <a href={POLYGONSCAN_URL + walletCreated.addr}>
+                    {walletCreated.addr}
+                </a>
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 {balance}
