@@ -162,6 +162,7 @@ After conducting technical verification by referring to the starter kit and Get 
 | 18  | Alchemy SDK         |
 | 19  | IPFS                |
 | 20  | Web3Auth            |
+| 21  | Vite                |
 
 ## How to run
 
