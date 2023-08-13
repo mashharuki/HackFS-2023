@@ -12,7 +12,7 @@ const Header = () => {
         <div className="w-full">
             <div className="bg-teal-100">
                 <nav className="flex justify-between w-full bg-teal-600 text-white p-4">
-                    <span className="font-semibold text-xl tracking-tight">Okozukai Wallet for admin</span>
+                    <span className="font-semibold text-xl tracking-tight">Okozukai Valut for admin</span>
                     <div className="flex text-sm" v-else>
                         {(currentAccount !== "" && currentAccount !== undefined)  ?
                             <button
