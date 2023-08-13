@@ -5,10 +5,10 @@ import { CLIOpts } from "../utils/types";
 import { ENTRY_POINT_ADDRESS, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "./../utils/Contents";
 
 const {
-  REACT_APP_BUNDLER_RPC_URL,
-  REACT_APP_PAYMASTER_RPC_URL,
-  REACT_APP_PAYMASTER_CONTEXT,
-}:any = process.env;
+  VITE_BUNDLER_RPC_URL,
+  VITE_PAYMASTER_RPC_URL,
+  VITE_PAYMASTER_CONTEXT,
+}:any = import.meta.env;
 
 /**
  * create SimpleAccount Object method
@@ -22,15 +22,15 @@ export const createSimpleAccountObject = async(
 
   const paymaster = opts.withPM
     ? Presets.Middleware.verifyingPaymaster(
-      REACT_APP_PAYMASTER_RPC_URL,
-      REACT_APP_PAYMASTER_CONTEXT
+      VITE_PAYMASTER_RPC_URL,
+      VITE_PAYMASTER_CONTEXT
     ) : undefined;
 
   // get simpleAccount object
-  // REACT_APP_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
+  // VITE_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
     privateKey,
-    REACT_APP_BUNDLER_RPC_URL,
+    VITE_BUNDLER_RPC_URL,
     ENTRY_POINT_ADDRESS,
     SIMPLE_ACCOUNT_FACTORY_ADDRESS,
     paymaster
@@ -48,10 +48,10 @@ export async function getAddress(
   privateKey: string
 ) {
   // get simpleAccount object
-  // REACT_APP_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
+  // VITE_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
     privateKey,
-    REACT_APP_BUNDLER_RPC_URL,
+    VITE_BUNDLER_RPC_URL,
     ENTRY_POINT_ADDRESS,
     SIMPLE_ACCOUNT_FACTORY_ADDRESS,
   );
@@ -76,7 +76,7 @@ export async function transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
   const target = ethers.utils.getAddress(t);
   const value = ethers.utils.parseEther(amt);
@@ -114,9 +114,9 @@ export async function erc20Transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
-  const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
+  const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
 
   const token = ethers.utils.getAddress(tkn);
   const to = ethers.utils.getAddress(t);
@@ -166,9 +166,9 @@ export async function erc20Approve(
 ): Promise<string>  {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
-  const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
+  const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
 
   const token = ethers.utils.getAddress(tkn);
   const spender = ethers.utils.getAddress(s);
@@ -219,9 +219,9 @@ export async function erc20BatchTransfer(
 ) {
    // get simpleAccount object
    const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-   const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+   const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
  
-   const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
+   const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
  
   const token = ethers.utils.getAddress(tkn);
   const erc20 = new ethers.Contract(token, ERC20_ABI, provider);
@@ -281,9 +281,9 @@ export async function erc721Transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(REACT_APP_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
 
-  const provider = new ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
+  const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
 
   const token = ethers.utils.getAddress(tkn);
   const to = ethers.utils.getAddress(t);

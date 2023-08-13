@@ -3,8 +3,8 @@ import { ethPersonalSign } from '@polybase/eth';
 import { DB_NAME_SPACE } from "./Contents";
 
 const {
-  REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY
-} = process.env;
+  VITE_CONNECT_ADDRESS_PRIVATE_KEY
+} = import.meta.env;
 
 
 /**
@@ -19,7 +19,7 @@ export const createPolybaseObject = ():any => {
   polybase.signer((data: any) => {
     return {
       h: 'eth-personal-sign',
-      sig: ethPersonalSign(`0x${REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY!}`, data)
+      sig: ethPersonalSign(`0x${VITE_CONNECT_ADDRESS_PRIVATE_KEY!}`, data)
     }
   });
 

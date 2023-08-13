@@ -2,10 +2,10 @@ import { MetaMaskInpageProvider } from "@metamask/providers";
 import { ethers } from "ethers";
 
 const {
-  REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY,
-  REACT_APP_ETH_MAINNET_RPC_URL,
-  REACT_APP_RPC_URL
-} = process.env;
+  VITE_CONNECT_ADDRESS_PRIVATE_KEY,
+  VITE_ETH_MAINNET_RPC_URL,
+  VITE_RPC_URL
+} = import.meta.env;
 
 declare global {
   interface Window {
@@ -43,7 +43,7 @@ export const shortAddress = (address:any) => {
  * getSinger Object
  */
 export const getSigner = ():any => {
-  const signer = new ethers.Wallet(REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY!);
+  const signer = new ethers.Wallet(VITE_CONNECT_ADDRESS_PRIVATE_KEY!);
   return signer;
 };
 
@@ -51,7 +51,7 @@ export const getSigner = ():any => {
  * getProvider Object
  */
 export const getProvider = ():any => {
-  const provider = new ethers.providers.JsonRpcProvider(REACT_APP_ETH_MAINNET_RPC_URL!)
+  const provider = new ethers.providers.JsonRpcProvider(VITE_ETH_MAINNET_RPC_URL!)
   return provider;
 }
 
@@ -59,6 +59,6 @@ export const getProvider = ():any => {
  * getMumbaiProvider Object
  */
 export const getMumbaiProvider = ():any => {
-  const provider = new ethers.providers.JsonRpcProvider(REACT_APP_RPC_URL!)
+  const provider = new ethers.providers.JsonRpcProvider(VITE_RPC_URL!)
   return provider;
 }

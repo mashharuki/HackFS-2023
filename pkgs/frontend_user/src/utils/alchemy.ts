@@ -5,11 +5,11 @@ import { Alchemy, Network } from "alchemy-sdk";
  */
 export const createAlchemy = ():any => {
   const {
-    REACT_APP_ALCHEMY_API_KEY
-  } = process.env;
+    VITE_ALCHEMY_API_KEY
+  } = import.meta.env;
   
   const settings = {
-    apiKey: REACT_APP_ALCHEMY_API_KEY,
+    apiKey: VITE_ALCHEMY_API_KEY,
     network: Network.MATIC_MUMBAI,
   };
   

@@ -22,8 +22,8 @@ import { createSimpleAccountObject } from "./../hooks/useUserOp";
 import { DB_COLLECTION_NAME, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from './../utils/Contents';
 
 const {
-  REACT_APP_BUNDLER_RPC_URL
-} = process.env;
+  VITE_BUNDLER_RPC_URL
+} = import.meta.env;
 
 /**
  * Home Component
@@ -108,19 +108,19 @@ const Home = () => {
       setIsLoading(true);
 
       // get network & chainID info
-      const provider = new Ethers.providers.JsonRpcProvider(REACT_APP_BUNDLER_RPC_URL);
+      const provider = new Ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
       const network = await provider.getNetwork();
       const chainId = network.chainId;
       // create web3Auth object
       const web3auth = createWeb3AuthObject("0x" + chainId.toString(16));
+      console.log("web3auth:", web3auth)
       // initModal
       await web3auth.initModal();
 
-      setIsLoading(false);
       setWeb3auth(web3auth);
-      setAuthorized(web3auth);
+      //setAuthorized(web3auth);
 
-      if(!account) {
+      if(account !== null && account !== undefined) {
         // get contract address
         const contractAddress = account!.getSender();
 
@@ -144,6 +144,8 @@ const Home = () => {
                             .get();
         setTxs(res.data);
       }
+
+      setIsLoading(false);
     };
     init();
   }, []);
