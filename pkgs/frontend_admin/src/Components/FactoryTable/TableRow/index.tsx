@@ -1,8 +1,8 @@
 import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
-import { MUMBAI_RPC_URL, POLYGONSCAN_URL } from '../../utils/Contents';
-import { WalletCreated } from '../../utils/types';
-import SendModal from '../common/SendModal';
+import { MUMBAI_RPC_URL, POLYGONSCAN_URL } from '../../../utils/Contents';
+import { WalletCreated } from '../../../utils/types';
+import SendModal from '../../common/SendModal';
 
 interface Props {
     walletCreated: WalletCreated;

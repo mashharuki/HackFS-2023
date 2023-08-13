@@ -4,9 +4,9 @@
    <img width="200" src="./pkgs/docs/imgs/logo/logo3.jpeg"/>
 </div>
 
-This is a repo of OkozukaiValut ( AA + hardhat + React.js + Push Protocol + The Graph + Polybase + LitProtocol )
+This is a repo of OkozukaiValut ( AA + hardhat + React.js + Push Protocol + The Graph + Polybase + Web3Auth )
 
-## Description
+## Description(en)
 
 OkozukaiValut is a product that creates an opportunity for mass adoption of Web3.
 
@@ -25,9 +25,21 @@ However, the private key signature is not required.
 
 Polybase and Push Protocol technologies are also combined to provide instant access to information necessary for wallet management.
 
+## プロダクトの概要(日本語)
+
+**OkozukaiWValut**は、Web3 のマスアダプションのきっかけを作るプロダクトです。
+
+秘密鍵の管理など、Web3 の世界に入るためのセットアップは EOA の概念を理解できるユーザーが行い、その他のユーザーはデジタル資産の管理に集中することができます。具体的には、Account Abstraction、The Graph、Polybase、Push Protocol、Web3 Auth の技術を組み合わせ、子供でも扱えることを目指したスマートコントラクトのウォレットアプリのプロトタイプを開発しました。
+
+ユーザーは預けられたデジタル資産を運用する権限を持ち、ユーザーの意思でいつでも送金できます。
+
+AA と Web3Auth を組み合わせたことにより秘密鍵の存在を意識することなく使うことができます!!
+
+また、Polybase と Push Protocol の技術を組み合わせることで、ウォレット管理に必要な情報も表示することに成功しました。
+
 ## Archtechture
 
-![](./pkgs/docs/imgs/system/system-SystemArchitecture.drawio.png)
+![](./pkgs/docs/imgs/system/system-onemorethon.drawio.png)
 
 ## Mission
 
@@ -57,19 +69,34 @@ Polybase and Push Protocol technologies are also combined to provide instant acc
   2. Transaction History Inquiry Function
   3. Notification function upon receipt of token
 
-## What I tried
+## Update Point
+
+- 前回出場したハッカソンからの更新点は、WebAuth の組み込みと AA との接続した点。
+- admin 向けの機能と user 向けの機能を分離して 2 つのアプリにした点。
+
+## What I tried (en)
 
 I developed Dapp for the first time using the Push Protocol SDK and the Polybase and Lit Protocol SDKs.
 The most difficult part was researching the features and functions of each protocol and assembling them into a single app based on account abstractions.
 
 After conducting technical verification by referring to the starter kit and Get Started documentation, we incorporated the functions into the main application.
 
+## What I tried (ja)
+
+Push Protocol SDK と Polybase、AA、Web3auth など複数の技術を組み合わせて Dapp を開発しました。
+
+一番苦労したのは、各プロトコルの特徴や機能を調べて、Account Abstraction のにアーキテクチャをベースに一つのアプリに組み上げることでした。
+
+スターターキットや Get Started のドキュメントを参照しながら技術的な検証を行い、最終形に落とし込むのに大変苦労しました。
+
 ## Contract Info
 
-| No. | Cotract Name   | Address                                                                                                                         | Network |
-| :-- | :------------- | :------------------------------------------------------------------------------------------------------------------------------ | :------ |
-| 1   | FactoryManager | [0x8eD85ab44b29286D878492da06c862770A078176](https://mumbai.polygonscan.com/address/0x8eD85ab44b29286D878492da06c862770A078176) | Mumbai  |
-| 2   | LitNft         | [0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105](https://mumbai.polygonscan.com/address/0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105) | Mumbai  |
+| No. | Cotract Name         | Address                                                                                                                         | Network |
+| :-- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------ | :------ |
+| 1   | FactoryManager       | [0x8eD85ab44b29286D878492da06c862770A078176](https://mumbai.polygonscan.com/address/0x8eD85ab44b29286D878492da06c862770A078176) | Mumbai  |
+| 2   | LitNft               | [0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105](https://mumbai.polygonscan.com/address/0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105) | Mumbai  |
+| 3   | EntryPoint           | [0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789](https://mumbai.polygonscan.com/address/0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789) | Mumbai  |
+| 4   | SimpleAccountFactory | [0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08](https://mumbai.polygonscan.com/address/0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08) | Mumbai  |
 
 ## Subgrph Info
 
@@ -207,13 +234,13 @@ After conducting technical verification by referring to the starter kit and Get 
   The following environment variables must be filled in
 
   ```txt
-  REACT_APP_RPC_URL=
-  REACT_APP_ETH_MAINNET_RPC_URL=
-  REACT_APP_BUNDLER_RPC_URL=
-  REACT_APP_PAYMASTER_RPC_URL=
-  REACT_APP_ALCHEMY_API_KEY=
-  REACT_APP_PAYMASTER_CONTEXT=""
-  REACT_APP_CONNECT_ADDRESS_PRIVATE_KEY=
+  VITE_RPC_URL=
+  VITE_ETH_MAINNET_RPC_URL=
+  VITE_BUNDLER_RPC_URL=
+  VITE_PAYMASTER_RPC_URL=
+  VITE_ALCHEMY_API_KEY=
+  VITE_PAYMASTER_CONTEXT=""
+  VITE_CONNECT_ADDRESS_PRIVATE_KEY=
   ```
 
 - Frontend start
