@@ -22,7 +22,7 @@ const FactoryTable = (props:Props) => {
     } = props;
     
     const [currentAccount, connectWallet] = useContext(CurrentAccountContent);
-    const [createNewFactory, addStake] = useContext(ContractContext);
+    const [addStake] = useContext(ContractContext);
 
     /**
      * tableRows

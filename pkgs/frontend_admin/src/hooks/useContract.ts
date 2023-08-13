@@ -5,7 +5,6 @@ import LitNftJson from "./../contract/artifacts/contracts/LitNft.sol/LitNft.json
 import { FACTORY_MANAGER_ADDRESS, LIT_NFT_ADDRESS } from './../utils/Contents';
 
 type ReturnUseContract = {
-  createNewFactory: (currentAccount: string) => void;
   addStake: (currentAccount: string, factoryAddress: string) => void;
 };
 
@@ -54,18 +53,6 @@ export const useContract = (): ReturnUseContract => {
   };
 
   /**
-   * create new account Factory Contract method
-   */
-  const createNewFactory = async(currentAccount: string) => {
-    // create contract
-    const factory = createContract(currentAccount, FACTORY_MANAGER_ADDRESS, FactoryManagerJson.abi);
-    // create new factory
-    const txn = await factory?.createFactory();
-    console.log("txn:", txn);
-    await txn.wait();
-  };
-
-  /**
    * add Stake method
    */
   const addStake = async(currentAccount: string, factoryAddress: string) => {
@@ -80,7 +67,6 @@ export const useContract = (): ReturnUseContract => {
   };
 
   return {
-    createNewFactory,
     addStake
   };
 };

@@ -2,10 +2,8 @@ import { createContext, ReactNode } from "react";
 import { useContract } from "../../hooks/useContract";
 
 const ContractContext = createContext<[
-    (currentAccount: string) => void,
     (currentAccount: string, factoryAddress: string) => void
 ]>([
-  (currentAccount: string) => {},
   (currentAccount: string, factoryAddress: string) => {},
 ]);
 
@@ -19,11 +17,11 @@ export const ContractProvider = ({
 }: {
     children: ReactNode;
 }) => {
-    const { createNewFactory, addStake } = useContract();
+    const { addStake } = useContract();
  
     return (
         <ContractContext.Provider 
-            value={[createNewFactory, addStake]}
+            value={[addStake]}
         >
             {children}
         </ContractContext.Provider>
