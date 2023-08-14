@@ -1,7 +1,6 @@
 import '@nomicfoundation/hardhat-chai-matchers';
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-etherscan";
-import "@typechain/hardhat";
 import * as dotenv from 'dotenv';
 import { HardhatUserConfig } from "hardhat/config";
 import 'solidity-coverage';
@@ -45,10 +44,6 @@ const config: HardhatUserConfig = {
       url: MUMBAI_API_URL,
       accounts: [`${PRIVATE_KEY}`],
     },
-  },
-  typechain: {
-    outDir: "typechain-types",
-    target: "ethers-v6",
   },
 };
 
