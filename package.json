@@ -19,6 +19,8 @@
     "frontend_admin:build": "yarn workspace frontend_admin build",
     "frontend_user:start": "yarn workspace frontend_user start",
     "frontend_user:build": "yarn workspace frontend_user build",
+    "frontend_user2:start": "yarn workspace frontend_user2 dev",
+    "frontend_user2:build": "yarn workspace frontend_user2 build",
     "litSandbox:start": "yarn workspace litSandbox start",
     "litSandbox:compile": "yarn workspace litSandbox compile",
     "litSandbox:deploy:mumbai": "yarn workspace litSandbox deploy:mumbai",
