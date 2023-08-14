@@ -1,12 +1,10 @@
+import { sendNotifications } from '@/hooks/usePush';
+import { erc20Transfer, getContractAddress } from '@/hooks/useUserOp';
+import { DB_COLLECTION_NAME, LINK_TOKEN_ADDRESS } from "@/utils/Contents";
+import { getCurrentTime } from '@/utils/date';
+import { CLIOpts } from "@/utils/types";
 import { usePolybase } from "@polybase/react";
 import { useState } from 'react';
-import { sendNotifications } from '../../hooks/usePush';
-import { erc20Transfer, getAddress } from '../../hooks/useUserOp';
-import { LINK_TOKEN_ADDRESS } from "../../utils/Contents";
-import { CLIOpts } from "../../utils/types";
-import './../../css/App.css';
-import { DB_COLLECTION_NAME } from './../../utils/Contents';
-import { getCurrentTime } from './../../utils/date';
 
 /**
  * ER20Transfer Component
@@ -20,6 +18,7 @@ const ERC20Transfer = (props:any) => {
 
     const {
         setIsLoading,
+        privateKey,
         factoryAddress
     } = props;
 
@@ -32,14 +31,14 @@ const ERC20Transfer = (props:any) => {
         try {
             setIsLoading(true);
             // get sender address
-            const sender = await getAddress(factoryAddress);
+            const sender = await getContractAddress(privateKey);
             // set ERC20 token
             await erc20Transfer(
                 tokenAddress, 
                 address, 
                 amount, 
                 opts, 
-                factoryAddress
+                privateKey,
             ).then(async(res) => {
                 const currentTime = getCurrentTime();
                 
@@ -73,7 +72,7 @@ const ERC20Transfer = (props:any) => {
 
     return (
         <div className='px-6 py-6 bg-white rounded-md border-b border-gray-200'>
-            <h1 className='text-lg mb-4'>Let's ERC20 Token transfer!!</h1>
+            <h1 className='text-lg mb-4'>Let ERC20 Token transfer!!</h1>
             <input
                 className='block'
                 type="text"

@@ -16,7 +16,7 @@ const ERC20Table = ( props:Props) => {
    */
   const TableRows = () => {
     return (tokens.map((token: any) => (
-      <TableRow token={token} />
+      <TableRow key={token} token={token} />
     )))
   }
 

@@ -1,11 +1,10 @@
+import { sendNotifications } from "@/hooks/usePush";
+import { getContractAddress, transfer } from '@/hooks/useUserOp';
+import { DB_COLLECTION_NAME } from '@/utils/Contents';
+import { getCurrentTime } from '@/utils/date';
+import { CLIOpts } from "@/utils/types";
 import { usePolybase } from "@polybase/react";
 import { useState } from 'react';
-import { sendNotifications } from "../../hooks/usePush";
-import { getAddress, transfer } from '../../hooks/useUserOp';
-import { CLIOpts } from "../../utils/types";
-import './../../css/App.css';
-import { DB_COLLECTION_NAME } from './../../utils/Contents';
-import { getCurrentTime } from './../../utils/date';
 
 /**
  * Transfer Component
@@ -18,7 +17,8 @@ const Transfer = (props:any) => {
 
     const {
         setIsLoading,
-        factoryAddress
+        factoryAddress,
+        privateKey,
     } = props;
 
     /**
@@ -33,13 +33,13 @@ const Transfer = (props:any) => {
         try {
             setIsLoading(true);
             // get sender address
-            const sender = await getAddress(factoryAddress);
+            const sender = await getContractAddress(privateKey);
             // call transfer method
             await transfer(
                 address, 
                 amount, 
                 opts, 
-                factoryAddress
+                privateKey
             ).then(async(res) => {
                 const currentTime = getCurrentTime();
                 // data insert to Polybase DB
@@ -72,7 +72,7 @@ const Transfer = (props:any) => {
 
     return (
         <div className='px-6 py-6 bg-white rounded-md border-b border-gray-200'>
-            <h1 className='text-lg mb-4'>Let's transfer!!</h1>
+            <h1 className='text-lg mb-4'>Let transfer!!</h1>
             <input
                 className='block'
                 type="text"

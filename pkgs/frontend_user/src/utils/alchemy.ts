@@ -4,12 +4,8 @@ import { Alchemy, Network } from "alchemy-sdk";
  * Alchemy用のインスタンスを作成するメソッド
  */
 export const createAlchemy = ():any => {
-  const {
-    VITE_ALCHEMY_API_KEY
-  } = import.meta.env;
-  
   const settings = {
-    apiKey: VITE_ALCHEMY_API_KEY,
+    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
     network: Network.MATIC_MUMBAI,
   };
   

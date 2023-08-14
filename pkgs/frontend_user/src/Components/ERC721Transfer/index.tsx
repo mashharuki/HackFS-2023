@@ -1,12 +1,10 @@
+import { sendNotifications } from '@/hooks/usePush';
+import { erc721Transfer, getContractAddress } from '@/hooks/useUserOp';
+import { DB_COLLECTION_NAME, NFT_ADDRESS } from "@/utils/Contents";
+import { getCurrentTime } from '@/utils/date';
+import { CLIOpts } from "@/utils/types";
 import { usePolybase } from "@polybase/react";
 import { useState } from 'react';
-import { sendNotifications } from '../../hooks/usePush';
-import { erc721Transfer, getAddress } from '../../hooks/useUserOp';
-import { NFT_ADDRESS } from "../../utils/Contents";
-import { CLIOpts } from "../../utils/types";
-import './../../css/App.css';
-import { DB_COLLECTION_NAME } from './../../utils/Contents';
-import { getCurrentTime } from './../../utils/date';
 
 /**
  * ERC721Transfer Component
@@ -20,6 +18,7 @@ const ERC721Transfer = (props:any) => {
 
     const {
         setIsLoading,
+        privateKey,
         factoryAddress
     } = props;
 
@@ -35,14 +34,14 @@ const ERC721Transfer = (props:any) => {
         try {
             setIsLoading(true);
             // get sender address
-            const sender = await getAddress(factoryAddress);
+            const sender = await getContractAddress(privateKey);
             // send NFT 
             await erc721Transfer(
                 nftAddress, 
                 address, 
                 tokenId, 
                 opts, 
-                factoryAddress
+                privateKey
             ).then(async(res) => {
                 const currentTime = getCurrentTime();
                 // data insert to Polybase DB
@@ -75,7 +74,7 @@ const ERC721Transfer = (props:any) => {
 
     return (
         <div className='px-6 py-6 bg-white rounded-md border-b border-gray-200'>
-            <h1 className='text-lg mb-4'>Let's NFT transfer!!</h1>
+            <h1 className='text-lg mb-4'>Let NFT transfer!!</h1>
             <input
                 className='block'
                 type="text"

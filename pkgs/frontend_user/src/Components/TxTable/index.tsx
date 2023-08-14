@@ -1,5 +1,5 @@
-import { shortAddress } from '../../utils/ethereum';
-import { CollectionRecord } from "../../utils/types";
+import { shortAddress } from '@/utils/ethereum';
+import { CollectionRecord } from "@/utils/types";
 
 type Props = {
   txs: CollectionRecord[];

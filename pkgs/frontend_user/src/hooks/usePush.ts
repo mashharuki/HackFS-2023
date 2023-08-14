@@ -1,7 +1,7 @@
+import { PUSH_CHANNEL_ADDRESS } from '@/utils/Contents';
+import { getSigner } from '@/utils/ethereum';
+import { getCAIPAddress } from '@/utils/helper';
 import * as PushAPI from '@pushprotocol/restapi';
-import { getSigner } from '../utils/ethereum';
-import { PUSH_CHANNEL_ADDRESS } from './../utils/Contents';
-import { getCAIPAddress } from './../utils/helper';
 
 /**
  * send Notification method

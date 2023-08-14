@@ -16,7 +16,7 @@ const NftTable = (props :Props) => {
    */
   const TableRows = () => {
     return (nfts.map((nft: any) => (
-      <TableRow nft={nft} />
+      <TableRow key={nft} nft={nft} />
     )))
   }
 

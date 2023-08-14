@@ -1,4 +1,4 @@
-import * as ethers from 'ethers';
+import { isAddress } from 'ethers';
 
 const Constants = {
     ENV: {
@@ -23,7 +23,7 @@ export interface AddressValidatorsType {
 }
 
 export function isValidETHAddress(address: string) {
-  return ethers.utils.isAddress(address);
+  return isAddress(address);
 }
 
 const AddressValidators: AddressValidatorsType = {

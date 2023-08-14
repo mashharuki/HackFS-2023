@@ -1,14 +1,8 @@
-import { ethers } from "ethers";
+import { ERC20_ABI, ERC721_ABI } from "@/utils";
+import { ENTRY_POINT_ADDRESS, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "@/utils/Contents";
+import { CLIOpts } from "@/utils/types";
+import { Contract, JsonRpcProvider, Wallet, getAddress, parseEther, parseUnits } from "ethers";
 import { Client, Presets } from "userop";
-import { ERC20_ABI, ERC721_ABI } from "../utils";
-import { CLIOpts } from "../utils/types";
-import { ENTRY_POINT_ADDRESS, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "./../utils/Contents";
-
-const {
-  VITE_BUNDLER_RPC_URL,
-  VITE_PAYMASTER_RPC_URL,
-  VITE_PAYMASTER_CONTEXT,
-}:any = import.meta.env;
 
 /**
  * create SimpleAccount Object method
@@ -22,15 +16,15 @@ export const createSimpleAccountObject = async(
 
   const paymaster = opts.withPM
     ? Presets.Middleware.verifyingPaymaster(
-      VITE_PAYMASTER_RPC_URL,
-      VITE_PAYMASTER_CONTEXT
+      process.env.NEXT_PUBLIC_PAYMASTER_RPC_URL!,
+      process.env.NEXT_PUBLIC_PAYMASTER_CONTEXT
     ) : undefined;
 
   // get simpleAccount object
-  // VITE_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
+  // NEXT_PUBLIC_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
-    privateKey,
-    VITE_BUNDLER_RPC_URL,
+    new Wallet(privateKey) as any,
+    process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!,
     ENTRY_POINT_ADDRESS,
     SIMPLE_ACCOUNT_FACTORY_ADDRESS,
     paymaster
@@ -44,14 +38,14 @@ export const createSimpleAccountObject = async(
  * @param privateKey
  * @return AccountWallet address
  */
-export async function getAddress(
+export async function getContractAddress(
   privateKey: string
 ) {
   // get simpleAccount object
-  // VITE_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
+  // NEXT_PUBLIC_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
-    privateKey,
-    VITE_BUNDLER_RPC_URL,
+    new Wallet(privateKey) as any,
+    process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!,
     ENTRY_POINT_ADDRESS,
     SIMPLE_ACCOUNT_FACTORY_ADDRESS,
   );
@@ -76,10 +70,10 @@ export async function transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
 
-  const target = ethers.utils.getAddress(t);
-  const value = ethers.utils.parseEther(amt);
+  const target = getAddress(t);
+  const value = parseEther(amt);
   // send user Op
   const res = await client.sendUserOperation(
     simpleAccount.execute(target, value, "0x"),
@@ -114,19 +108,19 @@ export async function erc20Transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
 
-  const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
+  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
 
-  const token = ethers.utils.getAddress(tkn);
-  const to = ethers.utils.getAddress(t);
-  const erc20 = new ethers.Contract(token, ERC20_ABI, provider);
+  const token = getAddress(tkn);
+  const to = getAddress(t);
+  const erc20 = new Contract(token, ERC20_ABI, provider);
   // get name & Symbol
   const [symbol, decimals] = await Promise.all([
     erc20.symbol(),
     erc20.decimals(),
   ]);
-  const amount = ethers.utils.parseUnits(amt, decimals);
+  const amount = parseUnits(amt, decimals);
   console.log(`Transferring ${amt} ${symbol}...`);
   // sendOp
   const res = await client.sendUserOperation(
@@ -166,19 +160,19 @@ export async function erc20Approve(
 ): Promise<string>  {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
 
-  const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
+  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
 
-  const token = ethers.utils.getAddress(tkn);
-  const spender = ethers.utils.getAddress(s);
-  const erc20 = new ethers.Contract(token, ERC20_ABI, provider);
+  const token = getAddress(tkn);
+  const spender = getAddress(s);
+  const erc20 = new Contract(token, ERC20_ABI, provider);
   // get name & Symbol
   const [symbol, decimals] = await Promise.all([
     erc20.symbol(),
     erc20.decimals(),
   ]);
-  const amount = ethers.utils.parseUnits(amt, decimals);
+  const amount = parseUnits(amt, decimals);
   console.log(`Approving ${amt} ${symbol}...`);
 
   // userOp
@@ -219,28 +213,28 @@ export async function erc20BatchTransfer(
 ) {
    // get simpleAccount object
    const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-   const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+   const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
  
-   const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
+   const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
  
-  const token = ethers.utils.getAddress(tkn);
-  const erc20 = new ethers.Contract(token, ERC20_ABI, provider);
+  const token = getAddress(tkn);
+  const erc20 = new Contract(token, ERC20_ABI, provider);
   // get toekn symbol & decimals
   const [symbol, decimals] = await Promise.all([
     erc20.symbol(),
     erc20.decimals(),
   ]);
-  const amount = ethers.utils.parseUnits(amt, decimals);
+  const amount = parseUnits(amt, decimals);
 
   let dest: Array<string> = [];
   let data: Array<string> = [];
   
   t.map((addr) => addr.trim()).forEach((addr) => {
-    dest = [...dest, erc20.address];
+    dest = [...dest as any, erc20.address];
     data = [
       ...data,
       erc20.interface.encodeFunctionData("transfer", [
-        ethers.utils.getAddress(addr),
+        getAddress(addr),
         amount,
       ]),
     ];
@@ -281,16 +275,16 @@ export async function erc721Transfer(
 ): Promise<string> {
   // get simpleAccount object
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
-  const client = await Client.init(VITE_BUNDLER_RPC_URL, ENTRY_POINT_ADDRESS);
+  const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
 
-  const provider = new ethers.providers.JsonRpcProvider(VITE_BUNDLER_RPC_URL);
+  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
 
-  const token = ethers.utils.getAddress(tkn);
-  const to = ethers.utils.getAddress(t);
+  const token = getAddress(tkn);
+  const to = getAddress(t);
   const tokenId = id;
 
   // create ERC721 Contract Object
-  const erc721 = new ethers.Contract(token, ERC721_ABI, provider);
+  const erc721 = new Contract(token, ERC721_ABI, provider);
   // get token name & symbol
   const [name, symbol] = await Promise.all([
     erc721.name(),

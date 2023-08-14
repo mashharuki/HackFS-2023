@@ -1,22 +1,17 @@
 import { CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
 import { Web3Auth } from "@web3auth/modal";
 
-const {
-  VITE_WEB3_AUTH_CLIENT_ID,
-  VITE_BUNDLER_RPC_URL
-} = import.meta.env;
-
 /**
  * createWeb3AuthObject
  */
 export const createWeb3AuthObject = (chainId: string): any => {
   const web3auth = new Web3Auth({
-    clientId: VITE_WEB3_AUTH_CLIENT_ID!,
+    clientId: process.env.NEXT_PUBLIC_WEB3_AUTH_CLIENT_ID!,
     web3AuthNetwork: "testnet",
     chainConfig: {
       chainNamespace: CHAIN_NAMESPACES.EIP155,
       chainId: chainId,
-      rpcTarget: VITE_BUNDLER_RPC_URL,
+      rpcTarget: process.env.NEXT_PUBLIC_BUNDLER_RPC_URL,
     },
   });
 
