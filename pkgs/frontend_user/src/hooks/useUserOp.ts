@@ -41,6 +41,16 @@ export const createSimpleAccountObject = async(
 export async function getContractAddress(
   privateKey: string
 ) {
+  const opts: CLIOpts = {
+    dryRun: false, // Set to true if you want to perform a dry run
+    withPM: false, // Set to true if you want to use a paymaster
+  };
+  const paymaster = opts.withPM
+    ? Presets.Middleware.verifyingPaymaster(
+      process.env.NEXT_PUBLIC_PAYMASTER_RPC_URL!,
+      process.env.NEXT_PUBLIC_PAYMASTER_CONTEXT
+    ) : undefined;
+    
   // get simpleAccount object
   // NEXT_PUBLIC_CONNECT_ADDRESS_PRIVATE_KEYは、Web3Authで生成されたものにする。
   const simpleAccount = await Presets.Builder.SimpleAccount.init(
@@ -48,6 +58,7 @@ export async function getContractAddress(
     process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!,
     ENTRY_POINT_ADDRESS,
     SIMPLE_ACCOUNT_FACTORY_ADDRESS,
+    paymaster
   );
 
   console.log("simple Account:", simpleAccount);

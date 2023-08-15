@@ -7,7 +7,6 @@ import Transfer from "@/Components/Transfer";
 import TxTable from '@/Components/TxTable';
 import SliderBar from '@/Components/common/Slidebar';
 import Spinner from "@/Components/common/Spinner";
-import { loadNotifications } from "@/hooks/usePush";
 import { createSimpleAccountObject } from "@/hooks/useUserOp";
 import { DB_COLLECTION_NAME, POLYGONSCAN_URL, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "@/utils/Contents";
 import { createAlchemy } from "@/utils/alchemy";
@@ -17,6 +16,7 @@ import { createWeb3AuthObject, getPrivateKey } from "@/utils/web3Auth";
 import { usePolybase } from "@polybase/react";
 import * as PushAPI from '@pushprotocol/restapi';
 import { Web3Auth } from "@web3auth/modal";
+import { formatEther } from "ethers";
 import { useEffect, useState } from "react";
 import { Presets } from "userop";
 
@@ -36,6 +36,7 @@ export default function Home() {
   const [idToken, setIdToken] = useState<string | null>(null);
   const [account, setAccount] = useState<Presets.Builder.SimpleAccount | null>(null);
   const [privateKey, setPrivateKey] = useState<string | null>(null);
+  const [balance, setBalance] = useState("");
 
   // create alchemy object
   const alchemy = createAlchemy();
@@ -90,7 +91,7 @@ export default function Home() {
     /*
     await transfer(
       "0x51908F598A5e0d8F1A3bAbFa6DF76F9704daD072", 
-      "0", 
+      "0.0", 
       opts, 
       pKey
     )
@@ -131,32 +132,35 @@ export default function Home() {
       // get privateKey
       const pKey = await getPrivateKey(web3auth.provider!);
 
-      if(account !== null && account !== undefined) {
-        // get contract address
-        const contractAddress = account!.getSender();
+      // get contract address
+      const contractAddress = account!.getSender();
 
-        console.log("contractAddress:", contractAddress)
+      // get balance info
+      const balanceInfo = await provider.getBalance(contractAddress);
+      setBalance(formatEther(balanceInfo));
 
-        // get own's NFT
-        await alchemy.nft.getNftsForOwner(contractAddress).then((res:any) => {
-          setNfts(res.ownedNfts);
-        });
-        // get own's ERC20 token
-        await alchemy.core.getTokenBalances(contractAddress).then((res:any) => {
-          setTokens(res.tokenBalances);
-        });
+      console.log("contractAddress:", contractAddress)
 
-        // get notifications
-        const notifications = await loadNotifications(false, contractAddress);
-        setSpams(notifications);
-        console.log("spams:", notifications);
+      // get own's NFT
+      await alchemy.nft.getNftsForOwner(contractAddress).then((res:any) => {
+        setNfts(res.ownedNfts);
+      });
+      // get own's ERC20 token
+      await alchemy.core.getTokenBalances(contractAddress).then((res:any) => {
+        setTokens(res.tokenBalances);
+      });
 
-        var res = await polybase.collection(`${DB_COLLECTION_NAME}`)
-                            .where("sender", "==", `${contractAddress}`)
-                            .sort("date", "desc")
-                            .get();
-        setTxs(res.data);
-      }
+      // get notifications
+      //const notifications = await loadNotifications(false, contractAddress);
+      //setSpams(notifications);
+      //console.log("spams:", notifications);
+
+      var res = await polybase.collection(`${DB_COLLECTION_NAME}`)
+                          .where("sender", "==", `${contractAddress}`)
+                          .sort("date", "desc")
+                          .get();
+      setTxs(res.data);
+      
 
       setWeb3auth(web3auth);
       setPrivateKey(pKey);
@@ -201,6 +205,10 @@ export default function Home() {
                       <a href={POLYGONSCAN_URL + account?.getSender()}>
                         {account?.getSender()}
                       </a>
+                    </h2>
+                    <h2 className='text-base mb-8'>
+                      my balance: 
+                        {balance} ETH
                     </h2>
                     {/* NFT Balance Table */}
                     <NftTable nfts={nfts} />

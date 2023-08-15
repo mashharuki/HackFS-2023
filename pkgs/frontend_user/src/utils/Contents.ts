@@ -29,3 +29,6 @@ export const LIT_NFT_ADDRESS = "0x45892C0Cb0860f96BA6d36a8C0f967E517ab5105";
 export const ENTRY_POINT_ADDRESS = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
 // simple account factory address
 export const SIMPLE_ACCOUNT_FACTORY_ADDRESS = "0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08";
+export const pmContext = {
+  type: "payg",
+};

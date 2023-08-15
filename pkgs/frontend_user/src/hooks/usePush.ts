@@ -1,6 +1,5 @@
 import { PUSH_CHANNEL_ADDRESS } from '@/utils/Contents';
 import { getSigner } from '@/utils/ethereum';
-import { getCAIPAddress } from '@/utils/helper';
 import * as PushAPI from '@pushprotocol/restapi';
 
 /**
@@ -43,9 +42,10 @@ export const loadNotifications = async(
 ): Promise<PushAPI.ParsedResponseType[]> => {
   
   const env: any = 'staging';
+  console.log("account:", account)
   // get spams
   const spams: PushAPI.ParsedResponseType[] = await PushAPI.user.getFeeds({
-    user: isCAIP ? getCAIPAddress(env, account) : account,
+    user: `eip155:5:${account}`,
     spam: true,
     env: env
   });
