@@ -265,7 +265,7 @@ Push Protocol SDK と Polybase、AA、Web3auth など複数の技術を組み合
 
 ## Live demo (Vercel)
 
-- [live demo - Vercel https://hack-fs-2023-frontend.vercel.app/](https://hack-fs-2023-frontend.vercel.app/)
+- [Okozukai Valut for user]()
 
 ## Presentation Slide
 
