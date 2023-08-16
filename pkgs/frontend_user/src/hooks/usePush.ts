@@ -46,7 +46,7 @@ export const loadNotifications = async(
   console.log("account:", account)
   // get spams
   const spams: PushAPI.ParsedResponseType[] = await PushAPI.user.getFeeds({
-    user: isCAIP ? getCAIPAddress(env, account) : account,
+    user: isCAIP ? getCAIPAddress(env, account) : `eip155:80001:${account}`,
     spam: true,
     env: env
   });

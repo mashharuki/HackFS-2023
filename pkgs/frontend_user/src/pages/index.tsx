@@ -7,7 +7,6 @@ import Transfer from "@/Components/Transfer";
 import TxTable from '@/Components/TxTable';
 import SliderBar from '@/Components/common/Slidebar';
 import Spinner from "@/Components/common/Spinner";
-import { loadNotifications } from '@/hooks/usePush';
 import { createSimpleAccountObject } from "@/hooks/useUserOp";
 import { DB_COLLECTION_NAME, POLYGONSCAN_URL, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "@/utils/Contents";
 import { createAlchemy } from "@/utils/alchemy";
@@ -130,7 +129,9 @@ export default function Home() {
       
       // initModal
       await web3auth.initModal();
-
+      
+      await web3auth.connect();
+      setAuthorized(web3auth);
       // get privateKey
       const pKey = await getPrivateKey(web3auth.provider!);
       setPrivateKey(pKey);
@@ -163,9 +164,9 @@ export default function Home() {
         });
 
         // get notifications
-        const notifications = await loadNotifications(false, contractAddress);
-        setSpams(notifications);
-        console.log("spams:", notifications);
+        //const notifications = await loadNotifications(false, contractAddress);
+        //setSpams(notifications);
+        //console.log("spams:", notifications);
 
         var res = await polybase.collection(`${DB_COLLECTION_NAME}`)
                             .where("sender", "==", `${contractAddress}`)
