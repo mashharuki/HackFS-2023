@@ -1,5 +1,6 @@
 import { PUSH_CHANNEL_ADDRESS } from '@/utils/Contents';
-import { getSigner } from '@/utils/ethereum';
+import { getConnectSigner } from '@/utils/ethereum';
+import { getCAIPAddress } from '@/utils/helper';
 import * as PushAPI from '@pushprotocol/restapi';
 
 /**
@@ -9,7 +10,7 @@ import * as PushAPI from '@pushprotocol/restapi';
 export const sendNotifications = async(address: string) => {
   const env: any = 'staging';
   // get signer
-  const signer = getSigner();
+  const signer = getConnectSigner();
   // send notifications
   const apiResponse = await PushAPI.payloads.sendNotification({
     signer: signer,
@@ -45,7 +46,7 @@ export const loadNotifications = async(
   console.log("account:", account)
   // get spams
   const spams: PushAPI.ParsedResponseType[] = await PushAPI.user.getFeeds({
-    user: `eip155:5:${account}`,
+    user: isCAIP ? getCAIPAddress(env, account) : account,
     spam: true,
     env: env
   });

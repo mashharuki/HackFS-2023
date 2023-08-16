@@ -36,7 +36,7 @@ export const shortAddress = (address:any) => {
 /**
  * getSinger Object
  */
-export const getSigner = ():any => {
+export const getConnectSigner = ():any => {
   const signer = new Wallet(process.env.NEXT_PUBLIC_CONNECT_ADDRESS_PRIVATE_KEY!);
   return signer;
 };

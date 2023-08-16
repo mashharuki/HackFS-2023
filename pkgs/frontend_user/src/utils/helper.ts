@@ -1,4 +1,5 @@
 import { isAddress } from 'ethers';
+import { z } from 'zod';
 
 const Constants = {
     ENV: {
@@ -23,7 +24,9 @@ export interface AddressValidatorsType {
 }
 
 export function isValidETHAddress(address: string) {
-  return isAddress(address);
+  console.log("address:", address)
+  const Address = z.custom<string>(isAddress, "Invalid Address")
+  return isAddress(Address.parse(address));
 }
 
 const AddressValidators: AddressValidatorsType = {
@@ -54,7 +57,7 @@ export function getFallbackETHCAIPAddress(env: string, address: string) {
   let chainId = 1; // by default PROD
 
   if (env === Constants.ENV.DEV || env === Constants.ENV.STAGING) {
-    chainId = 42;
+    chainId = 5;
   }
 
   return `eip155:${chainId}:${address}`;

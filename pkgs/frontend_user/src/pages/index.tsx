@@ -7,6 +7,7 @@ import Transfer from "@/Components/Transfer";
 import TxTable from '@/Components/TxTable';
 import SliderBar from '@/Components/common/Slidebar';
 import Spinner from "@/Components/common/Spinner";
+import { loadNotifications } from '@/hooks/usePush';
 import { createSimpleAccountObject } from "@/hooks/useUserOp";
 import { DB_COLLECTION_NAME, POLYGONSCAN_URL, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "@/utils/Contents";
 import { createAlchemy } from "@/utils/alchemy";
@@ -129,41 +130,51 @@ export default function Home() {
       
       // initModal
       await web3auth.initModal();
+
       // get privateKey
       const pKey = await getPrivateKey(web3auth.provider!);
+      setPrivateKey(pKey);
 
-      // get contract address
-      const contractAddress = account!.getSender();
+      const opts: CLIOpts = {
+        dryRun: false, // Set to true if you want to perform a dry run
+        withPM: false, // Set to true if you want to use a paymaster
+      };
+      // create contract account
+      const acc = await createSimpleAccountObject(pKey, opts);
 
-      // get balance info
-      const balanceInfo = await provider.getBalance(contractAddress);
-      setBalance(formatEther(balanceInfo));
+      if(acc !== null || acc !== undefined) {
+    
+        // get contract address
+        const contractAddress = acc!.getSender();
 
-      console.log("contractAddress:", contractAddress)
+        // get balance info
+        const balanceInfo = await provider.getBalance(contractAddress);
+        setBalance(formatEther(balanceInfo));
 
-      // get own's NFT
-      await alchemy.nft.getNftsForOwner(contractAddress).then((res:any) => {
-        setNfts(res.ownedNfts);
-      });
-      // get own's ERC20 token
-      await alchemy.core.getTokenBalances(contractAddress).then((res:any) => {
-        setTokens(res.tokenBalances);
-      });
+        console.log("contractAddress:", contractAddress)
 
-      // get notifications
-      //const notifications = await loadNotifications(false, contractAddress);
-      //setSpams(notifications);
-      //console.log("spams:", notifications);
+        // get own's NFT
+        await alchemy.nft.getNftsForOwner(contractAddress).then((res:any) => {
+          setNfts(res.ownedNfts);
+        });
+        // get own's ERC20 token
+        await alchemy.core.getTokenBalances(contractAddress).then((res:any) => {
+          setTokens(res.tokenBalances);
+        });
 
-      var res = await polybase.collection(`${DB_COLLECTION_NAME}`)
-                          .where("sender", "==", `${contractAddress}`)
-                          .sort("date", "desc")
-                          .get();
-      setTxs(res.data);
-      
+        // get notifications
+        const notifications = await loadNotifications(false, contractAddress);
+        setSpams(notifications);
+        console.log("spams:", notifications);
+
+        var res = await polybase.collection(`${DB_COLLECTION_NAME}`)
+                            .where("sender", "==", `${contractAddress}`)
+                            .sort("date", "desc")
+                            .get();
+        setTxs(res.data);
+      }
 
       setWeb3auth(web3auth);
-      setPrivateKey(pKey);
       setIsLoading(false);
     };
     init();
