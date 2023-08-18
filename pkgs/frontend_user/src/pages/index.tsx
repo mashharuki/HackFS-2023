@@ -7,7 +7,7 @@ import Transfer from "@/Components/Transfer";
 import TxTable from '@/Components/TxTable';
 import SliderBar from '@/Components/common/Slidebar';
 import Spinner from "@/Components/common/Spinner";
-import { createSimpleAccountObject } from "@/hooks/useUserOp";
+import { createSimpleAccountObject, transfer } from "@/hooks/useUserOp";
 import { DB_COLLECTION_NAME, POLYGONSCAN_URL, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "@/utils/Contents";
 import { createAlchemy } from "@/utils/alchemy";
 import { getMumbaiProvider } from '@/utils/ethereum';
@@ -82,21 +82,19 @@ export default function Home() {
 
     const opts: CLIOpts = {
       dryRun: false, 
-      withPM: false, 
+      withPM: true, 
     };
 
     const pKey = await getPrivateKey(web3auth.provider!);
 
     // call transfer method
-    /*
     await transfer(
       "0x51908F598A5e0d8F1A3bAbFa6DF76F9704daD072", 
-      "0.0", 
+      "0", 
       opts, 
       pKey
-    )
-    */
-
+    );
+    
     setAuthorized(web3auth);
   };
 

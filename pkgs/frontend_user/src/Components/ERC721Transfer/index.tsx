@@ -1,4 +1,3 @@
-import { sendNotifications } from '@/hooks/usePush';
 import { erc721Transfer, getContractAddress } from '@/hooks/useUserOp';
 import { DB_COLLECTION_NAME, NFT_ADDRESS } from "@/utils/Contents";
 import { getCurrentTime } from '@/utils/date';
@@ -60,7 +59,7 @@ const ERC721Transfer = (props:any) => {
                     ]); 
                 
                 // send notifications
-                await sendNotifications(address);
+                //await sendNotifications(address);
             });;
             alert('Transfer successful');
             console.log('Transfer successful');

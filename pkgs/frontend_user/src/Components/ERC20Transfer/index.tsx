@@ -1,4 +1,3 @@
-import { sendNotifications } from '@/hooks/usePush';
 import { erc20Transfer, getContractAddress } from '@/hooks/useUserOp';
 import { DB_COLLECTION_NAME, LINK_TOKEN_ADDRESS } from "@/utils/Contents";
 import { getCurrentTime } from '@/utils/date';
@@ -57,7 +56,7 @@ const ERC20Transfer = (props:any) => {
                         currentTime
                     ]); 
                 // send notifications
-                await sendNotifications(address);
+                //await sendNotifications(address);
             });
             
             alert('Transfer successful');

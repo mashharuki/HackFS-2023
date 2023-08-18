@@ -1,5 +1,5 @@
 import { ERC20_ABI, ERC721_ABI } from "@/utils";
-import { ENTRY_POINT_ADDRESS, SIMPLE_ACCOUNT_FACTORY_ADDRESS } from "@/utils/Contents";
+import { ENTRY_POINT_ADDRESS, SIMPLE_ACCOUNT_FACTORY_ADDRESS, pmContext } from "@/utils/Contents";
 import { CLIOpts } from "@/utils/types";
 import { Contract, JsonRpcProvider, Wallet, getAddress, parseEther, parseUnits } from "ethers";
 import { Client, Presets } from "userop";
@@ -17,7 +17,7 @@ export const createSimpleAccountObject = async(
   const paymaster = opts.withPM
     ? Presets.Middleware.verifyingPaymaster(
       process.env.NEXT_PUBLIC_PAYMASTER_RPC_URL!,
-      process.env.NEXT_PUBLIC_PAYMASTER_CONTEXT
+      pmContext
     ) : undefined;
 
   // get simpleAccount object
@@ -48,7 +48,7 @@ export async function getContractAddress(
   const paymaster = opts.withPM
     ? Presets.Middleware.verifyingPaymaster(
       process.env.NEXT_PUBLIC_PAYMASTER_RPC_URL!,
-      process.env.NEXT_PUBLIC_PAYMASTER_CONTEXT
+      pmContext
     ) : undefined;
     
   // get simpleAccount object
