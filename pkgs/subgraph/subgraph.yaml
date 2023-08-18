@@ -3,22 +3,22 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: FactoryManager
+    name: SimpleAccountFactory
     network: mumbai
     source:
-      address: "0x8eD85ab44b29286D878492da06c862770A078176"
-      abi: FactoryManager
-      startBlock: 36717428
+      address: "0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08"
+      abi: SimpleAccountFactory
+      startBlock: 36718676
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - FactoryCreated
+        - Created
       abis:
-        - name: FactoryManager
-          file: ./abis/FactoryManager.json
+        - name: SimpleAccountFactory
+          file: ./abis/SimpleAccountFactory.json
       eventHandlers:
-        - event: FactoryCreated(uint256,address)
-          handler: handleFactoryCreated
-      file: ./src/factory-manager.ts
+        - event: Created(uint256,address)
+          handler: handleCreated
+      file: ./src/simple-account-factory.ts

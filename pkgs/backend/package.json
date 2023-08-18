@@ -8,7 +8,8 @@
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
     "FactoryManager:deploy:mumbai": "npx hardhat run scripts/deploy_FactoryManager.ts --network mumbai",
-    "FactoryManager:verify:mumbai": "npx hardhat verify 0x8eD85ab44b29286D878492da06c862770A078176 --network mumbai"
+    "FactoryManager:verify:mumbai": "npx hardhat verify 0x8eD85ab44b29286D878492da06c862770A078176 --network mumbai",
+    "SimpleAccountFactory:verify:mumbai": "npx hardhat verify 0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08 --network mumbai --constructor-args scripts/arguments.ts"
   },
   "keywords": [],
   "author": "",
@@ -21,12 +22,12 @@
     "@typechain/hardhat": "^6.1.2",
     "@types/chai": "^4.2.0",
     "@types/mocha": ">=9.1.0",
-    "hardhat": "^2.14.0",
     "hardhat-gas-reporter": "^1.0.8",
     "solidity-coverage": "^0.8.1",
     "ts-node": "^10.9.1",
-    "typechain": "^8.1.0",
-    "typescript": "^5.1.3"
+    "typechain": "8.1.0",
+    "typescript": "^5.1.3",
+    "hardhat": "2.14.0"
   },
   "devDependencies": {
     "@ethersproject/abstract-provider": "^5.7.0",

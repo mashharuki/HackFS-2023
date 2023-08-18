@@ -1,3 +1,4 @@
+import '@nomicfoundation/hardhat-chai-matchers';
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-etherscan";
 import * as dotenv from 'dotenv';
@@ -43,7 +44,7 @@ const config: HardhatUserConfig = {
       url: MUMBAI_API_URL,
       accounts: [`${PRIVATE_KEY}`],
     },
-  }
+  },
 };
 
 export default config;

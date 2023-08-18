@@ -1,8 +1,8 @@
 {
   "mumbai": {
-    "FactoryManager": {
-      "address": "0x8eD85ab44b29286D878492da06c862770A078176",
-      "startBlock": 36717428
+    "SimpleAccountFactory": {
+      "address": "0xf4ddfea10b0561b14222c65d49a8105e4bd2dd08",
+      "startBlock": 36718676
     }
   }
 }
