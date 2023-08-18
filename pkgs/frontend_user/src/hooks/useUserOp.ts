@@ -121,7 +121,7 @@ export async function erc20Transfer(
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
   const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
 
-  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
+  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL!);
 
   const token = getAddress(tkn);
   const to = getAddress(t);
@@ -136,7 +136,7 @@ export async function erc20Transfer(
   // sendOp
   const res = await client.sendUserOperation(
     simpleAccount.execute(
-      erc20.address,
+      token,
       0,
       erc20.interface.encodeFunctionData("transfer", [to, amount])
     ),
@@ -173,7 +173,7 @@ export async function erc20Approve(
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
   const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
 
-  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
+  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL!);
 
   const token = getAddress(tkn);
   const spender = getAddress(s);
@@ -189,7 +189,7 @@ export async function erc20Approve(
   // userOp
   const res = await client.sendUserOperation(
     simpleAccount.execute(
-      erc20.address,
+      token,
       0,
       erc20.interface.encodeFunctionData("approve", [spender, amount])
     ),
@@ -226,7 +226,7 @@ export async function erc20BatchTransfer(
    const simpleAccount = await createSimpleAccountObject(privateKey, opts);
    const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
  
-   const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
+   const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL!);
  
   const token = getAddress(tkn);
   const erc20 = new Contract(token, ERC20_ABI, provider);
@@ -288,7 +288,7 @@ export async function erc721Transfer(
   const simpleAccount = await createSimpleAccountObject(privateKey, opts);
   const client = await Client.init(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!, ENTRY_POINT_ADDRESS);
 
-  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_BUNDLER_RPC_URL!);
+  const provider = new JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL!);
 
   const token = getAddress(tkn);
   const to = getAddress(t);
@@ -307,7 +307,7 @@ export async function erc721Transfer(
   // userOprationを送信する。
   const res = await client.sendUserOperation(
     simpleAccount.execute(
-      erc721.address,
+      token,
       0,
       erc721.interface.encodeFunctionData("transferFrom", [simpleAccount.getSender(), to, tokenId])
     ),
