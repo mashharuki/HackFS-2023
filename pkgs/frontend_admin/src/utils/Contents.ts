@@ -1,7 +1,7 @@
 // GraphQL API EndPoint
 export const GRAPHQL_API_ENDPOINT = "https://api.studio.thegraph.com/query/44992/okozukaivalut/v0.0.1";
 // Mumbai RPC URL
-export const MUMBAI_RPC_URL = 'https://endpoints.omniatech.io/v1/matic/mumbai/public';
+export const MUMBAI_RPC_URL = 'https://polygon-mumbai-bor.publicnode.com';
 // PolygonScan URL
 export const POLYGONSCAN_URL = "https://mumbai.polygonscan.com/address/"; 
 // LINK Token Address
